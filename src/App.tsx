@@ -3,250 +3,265 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 
-const signals = [
+const briefs = [
   {
-    short: 'LEAD',
-    incoming: 'A good lead went quiet.',
-    diagnosis: 'The customer journey loses context between inquiry and follow-up.',
-    route: 'CLARIFY + BUILD',
-    output: 'Clear offer · landing page · intake · CRM-lite follow-up',
-    code: 'CX—01',
+    index: '01',
+    label: 'Position',
+    question: 'People reach the business, but the value is not clear.',
+    reading: 'The problem may not be traffic. It may be a confusing offer, scattered message, or customer journey without a decisive next step.',
+    response: 'Clarify the offer, shape the journey, then build the website or landing experience around one useful action.',
+    outputs: 'Positioning · Website · Landing page · Intake',
   },
   {
-    short: 'PROCESS',
-    incoming: 'Work is scattered across people and tools.',
-    diagnosis: 'The business depends on memory, copying, and asking who knows what.',
-    route: 'MAP + SYSTEMIZE',
-    output: 'Shared records · dashboard · portal · booking · internal tool',
-    code: 'OPS—02',
+    index: '02',
+    label: 'Operations',
+    question: 'Important work lives in messages, memory, and spreadsheets.',
+    reading: 'Repeated questions, missing follow-up, and uncertain ownership usually point to an operating system that has not been made visible.',
+    response: 'Map the workflow, preserve what works, and create a shared system that reduces repeated effort without removing human judgment.',
+    outputs: 'CRM-lite · Dashboard · Portal · Internal tool',
   },
   {
-    short: 'GROWTH',
-    incoming: 'The next opportunity needs the right people.',
-    diagnosis: 'Progress is blocked by a missing partner, specialist, mentor, or pathway.',
-    route: 'DIAGNOSE + CONNECT',
-    output: 'Trusted introductions · technical support · coordinated delivery',
-    code: 'NET—03',
+    index: '03',
+    label: 'Connection',
+    question: 'The next move depends on people the business cannot yet reach.',
+    reading: 'Not every growth problem is solved with software. Sometimes progress needs a trusted partner, specialist, mentor, startup, or support pathway.',
+    response: 'Define the missing capability, make a useful connection, and coordinate the next step around a clear business outcome.',
+    outputs: 'Partner search · Technical support · Coordinated delivery',
   },
   {
-    short: 'TALENT',
-    incoming: 'Capable young people need a first real project.',
-    diagnosis: 'Talent exists, but supervised experience and portfolio evidence are scarce.',
-    route: 'SUPERVISE + DELIVER',
-    output: 'Real-project experience · mentoring · QA · accountable outcomes',
-    code: 'FUT—04',
+    index: '04',
+    label: 'Automation',
+    question: 'Routine work keeps taking attention from higher-value decisions.',
+    reading: 'Automation is useful when the repeated task is understood, the exceptions are known, and a person remains accountable for the result.',
+    response: 'Start with one reliable workflow, automate the repetitive layer, and keep approval where judgment, privacy, or quality matters.',
+    outputs: 'Workflow automation · Reports · Documents · AI assistance',
   },
 ]
 
-const responses = [
-  ['A business cannot explain its value clearly.', 'Clarify the offer and customer journey.', 'Positioning · website · landing page · intake'],
-  ['Leads and customers live in messages and spreadsheets.', 'Create shared operating memory.', 'CRM-lite · records · follow-up · dashboard'],
-  ['Routine work absorbs attention every week.', 'Move repetition without removing judgment.', 'Automation · reports · documents · supervised AI'],
-  ['A project needs capacity or specialist support.', 'Coordinate the right delivery network.', 'Partners · specialists · startups · supervised contributors'],
+const method = [
+  ['01', 'Diagnose', 'Find the real blockage before discussing tools, features, or scope.'],
+  ['02', 'Connect', 'Bring the right people, partners, opportunities, or support into reach.'],
+  ['03', 'Build', 'Deliver the smallest useful digital system with senior accountability.'],
+  ['04', 'Improve', 'Review what changed, strengthen the system, and choose the next move.'],
 ]
-
-const exchange = [
-  ['BUSINESSES', 'Get practical systems, useful connections, and accountable delivery.'],
-  ['YOUNG PEOPLE', 'Gain supervised experience, mentoring, and portfolio evidence.'],
-  ['PARTNERS', 'Join measurable opportunities around real business needs.'],
-]
-
-function Switchboard({ active }: { active: number }) {
-  const current = signals[active]
-  return (
-    <div className={`switchboard active-${active}`}>
-      <div className="board-top"><span>ARZWARE / GROWTH SWITCHBOARD</span><span>LINE {String(active + 1).padStart(2, '0')} LIVE</span></div>
-      <div className="lamp-row"><i /><i /><i className="on" /><i /><i /></div>
-      <svg className="cables" viewBox="0 0 780 610" aria-hidden="true">
-        <path className="cable cable-a" d="M55 110 C180 110 175 300 330 300 S525 112 720 112" />
-        <path className="cable cable-b" d="M55 240 C200 240 196 300 330 300 S536 242 720 242" />
-        <path className="cable cable-c" d="M55 370 C195 370 210 300 330 300 S540 372 720 372" />
-        <path className="cable cable-d" d="M55 500 C170 500 208 300 330 300 S525 502 720 502" />
-        <path className="pulse" d={[
-          'M55 110 C180 110 175 300 330 300 S525 112 720 112',
-          'M55 240 C200 240 196 300 330 300 S536 242 720 242',
-          'M55 370 C195 370 210 300 330 300 S540 372 720 372',
-          'M55 500 C170 500 208 300 330 300 S525 502 720 502',
-        ][active]} />
-      </svg>
-      <div className="input-stack">
-        {signals.map((signal, i) => <div className={i === active ? 'terminal active' : 'terminal'} key={signal.code}><i /><span>{signal.short}</span><small>{signal.code}</small></div>)}
-      </div>
-      <div className="operator-core"><img src="./assets/arzware-mark.png" alt="" /><span>ARZWARE</span><small>ROUTING WITH<br />HUMAN JUDGMENT</small></div>
-      <div className="output-stack">
-        {signals.map((signal, i) => <div className={i === active ? 'socket active' : 'socket'} key={signal.route}><i /><span>{signal.route}</span></div>)}
-      </div>
-      <div className="board-readout" key={current.code}><small>ACTIVE RESPONSE / {current.code}</small><strong>{current.output}</strong></div>
-      <div className="dial"><span>1</span><span>2</span><span>3</span><span>4</span><i /></div>
-    </div>
-  )
-}
 
 function App() {
   const root = useRef<HTMLDivElement>(null)
-  const [active, setActive] = useState(0)
+  const [activeBrief, setActiveBrief] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const lenis = reduced ? null : new Lenis({ duration: 1.05, smoothWheel: true })
-    let raf = 0
-    const frame = (time: number) => { lenis?.raf(time); raf = requestAnimationFrame(frame) }
-    raf = requestAnimationFrame(frame)
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const lenis = reduceMotion ? null : new Lenis({ duration: 1.15, smoothWheel: true, touchMultiplier: 1.1 })
+    let rafId = 0
+    const raf = (time: number) => {
+      lenis?.raf(time)
+      rafId = requestAnimationFrame(raf)
+    }
+    rafId = requestAnimationFrame(raf)
 
     const ctx = gsap.context(() => {
-      gsap.timeline({ defaults: { ease: 'power4.out' } })
-        .from('.header', { y: -24, opacity: 0, duration: .8 })
-        .from('.hero-label', { y: 18, opacity: 0, duration: .6 }, '-=.3')
-        .from('.hero-line span', { yPercent: 120, stagger: .1, duration: 1.05 }, '-=.2')
-        .from('.hero-copy, .hero-controls', { y: 25, opacity: 0, stagger: .1, duration: .75 }, '-=.55')
-        .from('.switchboard', { x: 60, rotate: 2, opacity: 0, duration: 1 }, '-=.85')
+      const intro = gsap.timeline({ defaults: { ease: 'power4.out' } })
+      intro
+        .from('.header', { opacity: 0, y: -18, duration: .8 })
+        .from('.hero-kicker', { opacity: 0, y: 15, duration: .65 }, '-=.3')
+        .from('.hero-line > span', { yPercent: 110, duration: 1.15, stagger: .11 }, '-=.2')
+        .from('.hero-summary, .hero-action, .hero-aside', { opacity: 0, y: 26, duration: .8, stagger: .1 }, '-=.65')
+        .fromTo('.hero-route-line', { scaleX: 0 }, { scaleX: 1, duration: 1.4 }, '-=.8')
+        .from('.hero-route-dot', { scale: 0, duration: .5, ease: 'back.out(2)' }, '-=.3')
 
-      gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
-        gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 84%' }, y: 45, opacity: 0, duration: .85, ease: 'power3.out' })
+      gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((element) => {
+        gsap.from(element, {
+          scrollTrigger: { trigger: element, start: 'top 86%' },
+          opacity: 0,
+          y: 38,
+          duration: .85,
+          ease: 'power3.out',
+        })
       })
-      gsap.to('.operator-word', { scrollTrigger: { trigger: '.operator', start: 'top bottom', end: 'bottom top', scrub: 1 }, xPercent: -16 })
-      gsap.to('.route-track-fill', { scrollTrigger: { trigger: '.method', start: 'top 68%', end: 'bottom 50%', scrub: 1 }, scaleX: 1 })
-      gsap.utils.toArray<HTMLElement>('.method-step').forEach((step, i) => {
-        gsap.from(step, { scrollTrigger: { trigger: '.method', start: `top ${75 - i * 7}%` }, y: 35, opacity: 0, duration: .7 })
+
+      gsap.utils.toArray<HTMLElement>('.rule-reveal').forEach((rule) => {
+        gsap.from(rule, {
+          scrollTrigger: { trigger: rule, start: 'top 90%' },
+          scaleX: 0,
+          transformOrigin: 'left center',
+          duration: 1.15,
+          ease: 'power3.inOut',
+        })
       })
-      gsap.to('.exchange-wheel', { rotation: 45, scrollTrigger: { trigger: '.exchange', start: 'top bottom', end: 'bottom top', scrub: 1 } })
+
+      gsap.to('.statement-ghost', {
+        xPercent: -20,
+        scrollTrigger: { trigger: '.statement', start: 'top bottom', end: 'bottom top', scrub: 1.2 },
+      })
+
+      gsap.to('.method-progress', {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: '.method', start: 'top 72%', end: 'bottom 58%', scrub: 1 },
+      })
+
+      gsap.utils.toArray<HTMLElement>('.method-item').forEach((item, index) => {
+        gsap.from(item, {
+          opacity: 0,
+          y: 30,
+          scrollTrigger: { trigger: '.method-grid', start: `top ${82 - index * 6}%` },
+          duration: .75,
+        })
+      })
+
+      gsap.to('.connection-orbit', {
+        rotation: 42,
+        scrollTrigger: { trigger: '.connections', start: 'top bottom', end: 'bottom top', scrub: 1.4 },
+      })
+      gsap.to('.connection-core', {
+        yPercent: -8,
+        scrollTrigger: { trigger: '.connections', start: 'top bottom', end: 'bottom top', scrub: 1.4 },
+      })
     }, root)
 
-    return () => { ctx.revert(); lenis?.destroy(); cancelAnimationFrame(raf) }
+    return () => {
+      ctx.revert()
+      lenis?.destroy()
+      cancelAnimationFrame(rafId)
+    }
   }, [])
 
+  const brief = briefs[activeBrief]
+
   return (
-    <div ref={root} className="site">
+    <div className="site" ref={root}>
       <header className="header">
-        <a href="#top" className="brand"><img src="./assets/arzware-mark.png" alt="" /><span>ARZWARE</span></a>
-        <div className="header-center">BUSINESS DEVELOPMENT / DIGITAL INNOVATION</div>
+        <a className="brand" href="#top" aria-label="Arzware home">
+          <img src="./assets/arzware-mark.png" alt="" />
+          <span>ARZWARE</span>
+        </a>
+        <span className="header-note">BUSINESS DEVELOPMENT · DIGITAL SYSTEMS</span>
         <nav className={menuOpen ? 'open' : ''}>
-          <a href="#switch" onClick={() => setMenuOpen(false)}>SWITCHBOARD</a>
-          <a href="#method" onClick={() => setMenuOpen(false)}>METHOD</a>
-          <a href="#exchange" onClick={() => setMenuOpen(false)}>EXCHANGE</a>
-          <a className="contact-link" href="mailto:arzware.lb@gmail.com">START A REVIEW ↗</a>
+          <a href="#approach" onClick={() => setMenuOpen(false)}>Approach</a>
+          <a href="#briefs" onClick={() => setMenuOpen(false)}>Business briefs</a>
+          <a href="#connections" onClick={() => setMenuOpen(false)}>Connections</a>
+          <a className="nav-cta" href="mailto:arzware.lb@gmail.com">Start a review <span>↗</span></a>
         </nav>
-        <button className="menu" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'CLOSE' : 'MENU'}</button>
+        <button className="menu" onClick={() => setMenuOpen((open) => !open)}>{menuOpen ? 'Close' : 'Menu'}</button>
       </header>
 
       <main id="top">
         <section className="hero">
-          <div className="hero-left">
-            <div className="hero-label"><i /> SAIDA, LEBANON · LINE OPEN</div>
-            <h1 aria-label="Make the right connection">
-              <span className="hero-line"><span>MAKE THE</span></span>
-              <span className="hero-line mint"><span>RIGHT</span></span>
-              <span className="hero-line serif"><span>CONNECTION.</span></span>
-            </h1>
-            <p className="hero-copy">Arzware turns business needs into coordinated action—diagnosing the problem, connecting the right people or opportunities, and building the smallest useful system when technology is the answer.</p>
-            <div className="hero-controls">
-              <a href="mailto:arzware.lb@gmail.com">SEND A BUSINESS SIGNAL ↗</a>
-              <span>CHOOSE A LINE →</span>
-              <div className="line-buttons">{signals.map((signal, i) => <button className={i === active ? 'active' : ''} onClick={() => setActive(i)} key={signal.short}>{String(i + 1).padStart(2, '0')}</button>)}</div>
-            </div>
+          <div className="hero-kicker"><span>01</span> Senior-led business development from Saida, Lebanon</div>
+          <h1 aria-label="A clear line from problem to progress">
+            <span className="hero-line"><span>A CLEAR LINE</span></span>
+            <span className="hero-line"><span>FROM PROBLEM</span></span>
+            <span className="hero-line gold"><span>TO PROGRESS.</span></span>
+          </h1>
+          <div className="hero-bottom">
+            <p className="hero-summary">Arzware helps businesses find the right people, opportunities, and practical digital systems to move forward—with clear diagnosis and accountable execution.</p>
+            <a className="hero-action" href="mailto:arzware.lb@gmail.com"><span>Discuss one business challenge</span><i>↗</i></a>
+            <aside className="hero-aside"><span>THE PRINCIPLE</span><p>Start with the highest-value problem. Build only what makes the next move clearer.</p></aside>
           </div>
-          <Switchboard active={active} />
+          <div className="hero-route" aria-hidden="true"><span className="hero-route-line" /><i className="hero-route-dot" /><small>PROBLEM</small><small>PROGRESS</small></div>
+          <div className="scroll-cue">SCROLL TO FOLLOW THE LINE <span>↓</span></div>
         </section>
 
-        <div className="ticker"><div>BUSINESS NEEDS IN&nbsp; ↗ &nbsp;DIAGNOSIS&nbsp; ↗ &nbsp;TRUSTED CONNECTIONS&nbsp; ↗ &nbsp;PRACTICAL SYSTEMS&nbsp; ↗ &nbsp;SUPERVISED EXPERIENCE&nbsp; ↗ &nbsp;BUSINESS NEEDS IN&nbsp; ↗ &nbsp;DIAGNOSIS&nbsp; ↗ &nbsp;</div></div>
-
-        <section className="operator">
-          <div className="section-code">01 / ARZWARE’S ROLE</div>
-          <div className="operator-word">OPERATOR&nbsp; OPERATOR&nbsp; OPERATOR</div>
-          <div className="operator-grid">
-            <h2 data-reveal>Not another vendor.<br /><em>The operator between need and progress.</em></h2>
+        <section className="statement">
+          <div className="statement-ghost" aria-hidden="true">CLARITY BEFORE CODE · CLARITY BEFORE CODE</div>
+          <div className="section-label">02 / WHAT COMES FIRST</div>
+          <div className="statement-grid">
+            <h2 data-reveal>We start before<br />the <em>software.</em></h2>
             <div data-reveal>
-              <p>A company may arrive asking for a website, automation, extra capacity, or a connection. We look underneath the request first.</p>
-              <p>Then Arzware builds, coordinates, connects—or combines those paths—around one accountable outcome.</p>
+              <p>A request for a website, CRM, automation, or AI agent is often the visible part of a deeper business issue.</p>
+              <p>We examine the offer, workflow, customer journey, people, and missing connections first. Technology enters when it is the most useful mechanism—not because it is fashionable.</p>
             </div>
           </div>
+          <div className="rule-reveal statement-rule" />
+          <div className="statement-note"><span>Our role</span><strong>Turn uncertainty into one useful next move.</strong></div>
         </section>
 
-        <section id="switch" className="dispatch">
-          <div className="section-code">02 / LIVE DISPATCH</div>
-          <div className="dispatch-head">
-            <h2 data-reveal>Choose what is<br /><em>blocking progress.</em></h2>
-            <p data-reveal>Every line begins with a business reality—not a technology category.</p>
+        <section className="method" id="approach">
+          <div className="section-label">03 / THE OPERATING LINE</div>
+          <div className="method-heading">
+            <h2 data-reveal>Four moves.<br /><em>One accountable route.</em></h2>
+            <p data-reveal>Business development, useful connections, and digital delivery belong to the same process.</p>
           </div>
-          <div className="dispatch-layout">
-            <div className="dispatch-tabs">
-              {signals.map((signal, i) => (
-                <button className={i === active ? 'active' : ''} onClick={() => setActive(i)} key={signal.code}>
-                  <span>{signal.code}</span><strong>{signal.incoming}</strong><i />
-                </button>
-              ))}
-            </div>
-            <article className="dispatch-response" key={signals[active].code}>
-              <div className="response-status"><i /> ROUTE CONFIRMED</div>
-              <small>WHAT WE FIND</small>
-              <h3>{signals[active].diagnosis}</h3>
-              <div className="response-route"><span>ARZWARE ROUTE</span><strong>{signals[active].route}</strong></div>
-              <small>PRACTICAL OUTPUT</small>
-              <p>{signals[active].output}</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="method" className="method">
-          <div className="section-code">03 / SIGNAL PATH</div>
-          <h2 data-reveal>One route.<br /><em>Four disciplined moves.</em></h2>
-          <div className="route-track"><div className="route-track-fill" /></div>
+          <div className="method-track"><div className="method-progress" /></div>
           <div className="method-grid">
-            {[
-              ['01', 'DIAGNOSE', 'Understand the business, the customer, the process, and the actual blockage.'],
-              ['02', 'CONNECT', 'Bring the right partner, specialist, opportunity, or support into reach.'],
-              ['03', 'BUILD', 'Deliver the smallest useful website, workflow, dashboard, CRM, automation, or internal tool.'],
-              ['04', 'IMPROVE', 'Measure what changed, strengthen the system, and decide the next useful move.'],
-            ].map(([no, title, text]) => <article className="method-step" key={title}><i /><span>{no}</span><h3>{title}</h3><p>{text}</p></article>)}
-          </div>
-        </section>
-
-        <section className="responses">
-          <div className="responses-title">
-            <div className="section-code">04 / RESPONSE DIRECTORY</div>
-            <h2 data-reveal>What enters.<br /><em>What moves.</em></h2>
-          </div>
-          <div className="response-list">
-            {responses.map(([incoming, move, tools], i) => (
-              <article data-reveal key={incoming}>
-                <span>{String(i + 1).padStart(2, '0')}</span>
-                <div><small>INCOMING</small><h3>{incoming}</h3></div>
-                <div><small>ARZWARE MOVE</small><p>{move}</p></div>
-                <div><small>POSSIBLE OUTPUT</small><p>{tools}</p></div>
+            {method.map(([number, title, description]) => (
+              <article className="method-item" key={title}>
+                <span className="method-number">{number}</span>
+                <i />
+                <h3>{title}</h3>
+                <p>{description}</p>
               </article>
             ))}
           </div>
-          <p className="proof-note">Solution patterns—not claims about completed client projects.</p>
         </section>
 
-        <section id="exchange" className="exchange">
-          <div className="section-code">05 / THE GROWTH EXCHANGE</div>
-          <div className="exchange-head">
-            <h2 data-reveal>Business value moves<br /><em>in more than one direction.</em></h2>
-            <p data-reveal>Arzware combines commercial delivery, trusted collaboration, and supervised experience into a sustainable ecosystem—not charity, and not cheap labor.</p>
+        <section className="briefs" id="briefs">
+          <div className="section-label">04 / BUSINESS BRIEFS</div>
+          <div className="briefs-heading">
+            <h2 data-reveal>Begin with the<br /><em>business situation.</em></h2>
+            <p data-reveal>Select a brief to see how Arzware reads the problem before shaping a response.</p>
           </div>
-          <div className="exchange-stage">
-            <div className="exchange-wheel">
-              <span className="wheel-node node-a">BUSINESS<br />NEEDS</span>
-              <span className="wheel-node node-b">REAL<br />PROJECTS</span>
-              <span className="wheel-node node-c">YOUTH<br />EXPERIENCE</span>
-              <span className="wheel-node node-d">PARTNER<br />VALUE</span>
+          <div className="brief-workspace">
+            <div className="brief-tabs">
+              {briefs.map((item, index) => (
+                <button className={index === activeBrief ? 'active' : ''} onClick={() => setActiveBrief(index)} key={item.label}>
+                  <span>{item.index}</span>
+                  <strong>{item.label}</strong>
+                  <i>{index === activeBrief ? '−' : '+'}</i>
+                </button>
+              ))}
             </div>
-            <div className="exchange-core"><img src="./assets/arzware-mark.png" alt="Arzware" /><span>ACCOUNTABLE<br />COORDINATION</span></div>
+            <article className="brief-panel" key={brief.index}>
+              <header><span>BRIEF / {brief.index}</span><span>ARZWARE READING</span></header>
+              <h3>{brief.question}</h3>
+              <div className="brief-reading"><span>WHAT MAY BE UNDERNEATH</span><p>{brief.reading}</p></div>
+              <div className="brief-response"><span>THE CLEAR LINE</span><p>{brief.response}</p></div>
+              <footer><span>POSSIBLE OUTPUT</span><strong>{brief.outputs}</strong></footer>
+            </article>
           </div>
-          <div className="exchange-list">
-            {exchange.map(([title, text]) => <article data-reveal key={title}><span>{title}</span><p>{text}</p></article>)}
+          <div className="solution-note">These are solution patterns, not claims about completed client projects.</div>
+        </section>
+
+        <section className="connections" id="connections">
+          <div className="section-label">05 / CONNECTION IS PART OF THE WORK</div>
+          <div className="connections-copy">
+            <h2 data-reveal>Not every answer<br />is something <em>we build.</em></h2>
+            <p data-reveal>Sometimes the useful move is a trusted introduction—to a partner, specialist, startup, mentor, service provider, technical team, or growth opportunity. Arzware helps define what is missing and coordinates the connection around the business need.</p>
+          </div>
+          <div className="connection-visual" aria-hidden="true">
+            <div className="connection-orbit">
+              <span className="node node-a">BUSINESS</span><span className="node node-b">PARTNER</span><span className="node node-c">OPPORTUNITY</span><span className="node node-d">SYSTEM</span>
+            </div>
+            <div className="connection-core"><img src="./assets/arzware-mark.png" alt="" /><span>ARZWARE</span><small>DEFINE · CONNECT · COORDINATE</small></div>
+          </div>
+        </section>
+
+        <section className="impact">
+          <div className="section-label">06 / BUILDING FUTURES, RESPONSIBLY</div>
+          <div className="impact-title">
+            <h2 data-reveal>Experience grows<br />through <em>real responsibility.</em></h2>
+            <span data-reveal>SUPERVISED<br />NOT UNSUPPORTED</span>
+          </div>
+          <div className="rule-reveal impact-rule" />
+          <div className="impact-grid">
+            <article data-reveal><span>FOR BUSINESSES</span><h3>Senior accountability remains visible.</h3><p>Arzware owns diagnosis, architecture, supervision, quality, privacy, and launch approval.</p></article>
+            <article data-reveal><span>FOR YOUNG PEOPLE</span><h3>Practice becomes portfolio evidence.</h3><p>Suitable real-project work can create supervised experience, mentoring, discipline, and a clearer route toward employment.</p></article>
+            <article data-reveal><span>FOR PARTNERS</span><h3>Impact connects to useful delivery.</h3><p>Funders and ecosystem partners can support measurable pathways around real business needs and accountable outcomes.</p></article>
           </div>
         </section>
 
         <section className="closing">
-          <div className="closing-status"><i /> CHANNEL AVAILABLE</div>
-          <h2 data-reveal>What does your business<br /><em>need to move?</em></h2>
-          <p data-reveal>Bring one bottleneck, opportunity, scattered process, missing connection, or digital idea. We will start by finding the right route.</p>
-          <a href="mailto:arzware.lb@gmail.com">START A BUSINESS IMPROVEMENT REVIEW <span>↗</span></a>
-          <footer><div className="brand"><img src="./assets/arzware-mark.png" alt="" /><span>ARZWARE</span></div><span>ARZWARE.LB@GMAIL.COM</span><span>SAIDA, LEBANON · 2026</span></footer>
+          <div className="closing-top"><span>07 / BEGIN</span><span>SAIDA, LEBANON</span></div>
+          <h2 data-reveal>Bring one problem.<br /><em>Leave with a clearer line.</em></h2>
+          <p data-reveal>A Business Improvement Review starts with the bottleneck, opportunity, missing connection, or process—not a predetermined package.</p>
+          <a className="closing-action" href="mailto:arzware.lb@gmail.com"><span>Start a business improvement review</span><i>↗</i></a>
+          <footer>
+            <a className="brand" href="#top"><img src="./assets/arzware-mark.png" alt="" /><span>ARZWARE</span></a>
+            <a href="mailto:arzware.lb@gmail.com">ARZWARE.LB@GMAIL.COM</a>
+            <span>CONNECTING BUSINESSES. BUILDING FUTURES.</span>
+          </footer>
         </section>
       </main>
     </div>

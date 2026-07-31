@@ -1,42 +1,47 @@
-# Arzware V3 — The Growth Switchboard
+# Arzware V3 — The Clear Line
 
-## One-sentence concept
+## Concept
 
-The website behaves like a cooperative switchboard: real business needs arrive as signals, Arzware routes each one toward the right connection, opportunity, or practical system, and one accountable outcome lights up.
+The website behaves like a private business briefing: each scroll removes noise and draws one clear gold line from a real business problem to accountable progress.
 
-## Why it belongs to Arzware
+## Why it fits Arzware
 
-Arzware’s direction is broader than software delivery. It diagnoses business friction, connects companies with useful people and opportunities, builds practical digital systems, and creates supervised real-project pathways for young people. A switchboard makes that coordinating role visible without relying on generic AI imagery.
+Arzware is not defined by a menu of technologies. It listens first, finds the highest-value blockage, connects the right people or opportunities, and builds the smallest useful system when technology is the answer. The continuous line makes this disciplined path visible.
 
-## Visual language
+## Palette
 
-- Aubergine foundation: `#2b163f`
-- Electric mint: `#a7f7c5`
-- Butter yellow: `#f6d86f`
-- Warm blush: `#ef9f9a`
-- Soft ivory: `#f5f1e8`
-- Modular modernist typography, chunky borders, circular terminals, cables, status lamps, numbered routing labels, and oversized editorial statements.
+- Obsidian black: `#0B0B0A`
+- Cappuccino white: `#E9DFD0`
+- Soft cream: `#F4EEE5`
+- Restrained gold: `#B8955A`
+- Muted graphite: `#20201E`
 
-## Signature interaction
+Gold is reserved for select serif typography, rules, progress, and interaction states. It never becomes a large flashy surface.
 
-Visitors select an incoming business signal—lead, process, growth, or talent. The switchboard reroutes its cable, changes the active terminal, and reveals the corresponding Arzware response. Scroll then carries the same signal through Diagnose → Connect → Build → Improve.
+## Typography and composition
 
-## Narrative
+- Clean grotesk sans-serif for clarity and authority.
+- High-contrast editorial serif for gold emphasis.
+- Generous negative space, fine rules, oversized statements, quiet data labels, and asymmetric business-editorial layouts.
+- No repeated card grid; sections alternate between statements, routed steps, interactive briefs, and full-bleed editorial chapters.
 
-1. Make the right connection.
-2. Arzware is the operator—not another vendor menu.
-3. Choose an incoming business signal and see how it is routed.
-4. Follow the operating method.
-5. Explore concrete response patterns.
-6. Show the business/youth/partner exchange.
-7. Invite one Business Improvement Review.
+## Signature motion
 
-## Originality gate
+A gold line draws through Diagnose → Connect → Build → Improve as the page scrolls. Headings reveal through masks; fine rules extend; selected business briefs transition through a single focus panel. Motion is measured and explanatory.
 
-V3 must not resemble:
+## Content order
 
-- V2’s evidence-board, paper scraps, receipts, stamps, or cobalt/orange palette.
-- The original website’s dark particle sphere or digital-spine visual metaphor.
-- Generic SaaS cards, dashboard mockups, floating gradient blobs, chrome 3D objects, or robotic AI imagery.
+1. A clear line from problem to progress.
+2. We start before the software.
+3. Diagnose → Connect → Build → Improve.
+4. Interactive business briefs.
+5. Business connections as part of the work.
+6. Supervised experience with senior accountability.
+7. Business Improvement Review CTA.
 
-The switchboard interaction, routed cables, and exchange narrative must remain the organizing system—not decoration applied to a template.
+## Forbidden regressions
+
+- V2 paper scraps, evidence-board graphics, stamps, receipts, cobalt, or signal orange.
+- Previous V3 switchboard, cables, terminals, status lamps, aubergine, mint, butter, or blush.
+- Original-site particles or digital sphere.
+- Generic SaaS card grids, glassmorphism, gradient blobs, chrome 3D objects, AI robots, and unsupported outcome claims.

@@ -1,17 +1,17 @@
-# Arzware Website V3 — The Growth Switchboard
+# Arzware Website V3 — The Clear Line
 
-A separate motion-led concept for Arzware’s business-development direction.
+A restrained, business-first Arzware concept in black, cappuccino white, and gold.
 
-## Core idea
+## Concept
 
-Business needs arrive as signals. Arzware diagnoses each signal and routes it toward the right connection, opportunity, or practical digital system.
+A continuous gold line moves from business problem to accountable progress through Arzware’s operating model: Diagnose → Connect → Build → Improve.
 
 ## Stack
 
 - React + TypeScript + Vite
 - GSAP + ScrollTrigger
 - Lenis smooth scrolling
-- Original responsive SVG/CSS switchboard illustration
+- Responsive CSS and reduced-motion support
 
 ## Commands
 
@@ -23,4 +23,4 @@ npm run build
 npm run deploy
 ```
 
-See [`DESIGN.md`](./DESIGN.md) for the full creative rationale and originality guardrails.
+See [`DESIGN.md`](./DESIGN.md) for the complete creative direction.
